@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote Generator - Advanced</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+    
+
+</head>
+<body>
+    <!-- Navbar with controls -->
+   <nav class="navbar">
+    <div class="nav-left">
+        <h2 class="nav-title"> Quote Generator</h2>
+        
+    </div>
+
+    <div class="nav-controls">
+        <button id="darkModeToggle" onclick="toggleDarkMode()" class="nav-btn nav-text">🌙 Dark</button>
+        <button onclick="showFavorites()" class="nav-btn nav-text">❤️ Favorites</button>
+        <button onclick="showHistory()" class="nav-btn nav-text">📜 History</button>
+    </div>
+</nav>
+
+
+    <!-- Main quote container -->
+    <div class="quote-container">
+        <h1>🎯 Random Quote Generator</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="advanced-controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search quotes by text or author...">
+                <button onclick="searchQuotes()" class="btn-search">🔍 Search</button>
+            </div>
+            
+            <div class="filter-box">
+                <label for="categoryFilter">Category:</label>
+                <select id="categoryFilter" onchange="filterByCategory(this.value)">
+                    <option value="all">All Categories</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Quote Display -->
+        <div class="quote-box">
+            <p id="quoteText">Click the button to generate a quote</p>
+            <p id="quoteAuthor"></p>
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button onclick="showQuote()" class="btn-primary">Generate Quote</button>
+            <button id="favoriteBtn" onclick="addToFavorite()" class="btn-secondary" title="Add to favorites">🤍 Favorite</button>
+            <button onclick="copyQuote()" class="btn-secondary" title="Copy quote to clipboard">📋 Copy</button>
+            <button onclick="shareQuote()" class="btn-secondary" title="Share quote">🔗 Share</button>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-box">
+            <div class="stat-item">
+                <span class="stat-label">Quotes Generated:</span>
+                <span class="stat-value" id="statsCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Favorites:</span>
+                <span class="stat-value" id="favoriteCount">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="favoritesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>❤️ Favorite Quotes</h2>
+                <button onclick="closeFavoritesModal()" class="modal-close">&times;</button>
+            </div>
+            <div id="favoritesList" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📜 Quote History</h2>
+                <button onclick="closeHistoryModal()" class="modal-close">&times;</button>
+            </div>
+            <div id="historyList" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="quotes.js"></script>
+</body>
+</html>
